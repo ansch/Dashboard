@@ -1,0 +1,8 @@
+{* purpose of this template: plugins view json view in admin area *}
+{dashboardTemplateHeaders contentType='application/json'}
+[
+{foreach item='item' from=$items name='plugins'}
+    {if not $smarty.foreach.plugins.first},{/if}
+    {$item->toJson()}
+{/foreach}
+]

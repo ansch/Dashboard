@@ -1,0 +1,4 @@
+CHANGELOG
+---------
+
+Changes in Dashboard 1.0.0

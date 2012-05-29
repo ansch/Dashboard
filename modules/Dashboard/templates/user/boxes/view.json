@@ -1,0 +1,8 @@
+{* purpose of this template: boxes view json view in user area *}
+{dashboardTemplateHeaders contentType='application/json'}
+[
+{foreach item='item' from=$items name='boxes'}
+    {if not $smarty.foreach.boxes.first},{/if}
+    {$item->toJson()}
+{/foreach}
+]

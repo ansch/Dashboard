@@ -1,0 +1,9 @@
+{* purpose of this template: plugins view xml view in user area *}
+{dashboardTemplateHeaders contentType='text/xml'}<?xml version="1.0" encoding="{charset}" ?>
+<plugins>
+{foreach item='item' from=$items}
+    {include file='user/plugins/include.xml'}
+{foreachelse}
+    <noPlugins />
+{/foreach}
+</plugins>
