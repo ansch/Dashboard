@@ -1,0 +1,19 @@
+This module is Beta, so don't use it on production Sites!
+
+Dashboard aims to give registered users the possibility to create their own startpage.
+
+Install it like every other module, but consider that you need to copy the config-folder to your Zikula-root.
+This folder contains all the templates and css, because the module was generated with MOST and i will surely use MOST to generate future versions.
+
+If you like to contribute to Dashboard i beg you to do all custom logic in the concrete classes and not within the base classes.
+This will ensure that future updates via MOST can be integrated easily.
+
+Usage:
+First ensure that you have set your zikula-startpage to
+  start moudule: Dashboard
+  start function type: user
+  start function: main
+
+Then do the same under index.php?module=dashboard&type=admin&func=commonSettings for not logged-in users.
+
+Feel free to try the rest.
