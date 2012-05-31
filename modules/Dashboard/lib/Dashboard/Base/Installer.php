@@ -37,7 +37,7 @@ class Dashboard_Base_Installer extends Zikula_AbstractInstaller
         $this->setVar('AllowCustomizing', 1);
 
         // create the default data for Dashboard
-        $this->createDefaultData();
+        //$this->createDefaultData();
 
         // register persistent event handlers
         $this->registerPersistentEventHandlers();
