@@ -427,7 +427,14 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
             // return template
             return $this->view->fetch('plugin/template.tpl');
     }
-    
+
+    /**
+     * @desc    This method resets a users boxes to default if he has not choosen a box yet or has deleted all of his boxes and is calledd at controller->user->main.
+     * 
+     * @return  boolean
+     */       
+    /** TODO: delete a users old boxes if this method is called by controller->user->reset
+     */
     public function reset($args)
         {
             // Check first if box was already added before
