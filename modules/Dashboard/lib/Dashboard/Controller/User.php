@@ -15,7 +15,13 @@
  * This is the User controller class providing navigation and interaction functionality.
  */
 class Dashboard_Controller_User extends Dashboard_Controller_Base_User
-{   
+{
+    /**
+     * @desc    This method turns editmode on or off, is used in user/main.tpl and passed by url.
+     * 
+     * @param   string  $args['editmode']   0 turns editmode off, 1 turns editmode on.
+     * @return  redirect to startpage.
+     */    
     public function editmode($args)
         {
         $editmode = isset($args['editmode']) ? false : FormUtil::getPassedValue('editmode', null, 'GET');
@@ -28,6 +34,18 @@ class Dashboard_Controller_User extends Dashboard_Controller_Base_User
         
     }
     
+    /**
+     * @desc    This is the main user method turns editmode on or off and uses user/main.tpl.
+     *          It generates a users individual startpage and provides the possibility for a user to edit
+     *          his own startpage. 
+     * 
+     * @return  User not logged in: Startmodule, -type and -function defined at controller->admin->commonSettings
+     *          User logged in and Customzing allowed at controller->admin->commonSettings:
+     *              Users own startpage, which is set to standard defined at controller->admin->defaultConfig if a User has 
+     *              not yet choosen any box or has deleted every box.
+     *          User logged in and Customzing not allowed in controller->admin->commonSettings:
+     *              Startmodule, -type and -function defined at controller->admin->commonSettings
+     */  
     public function main($args)
         {
         $editmodesession = SessionUtil::getVar('DashboardEditMode', null);        
@@ -108,13 +126,14 @@ class Dashboard_Controller_User extends Dashboard_Controller_Base_User
     }
 
     /**
-     * This method provides a generic handling of simple delete requests.
-     *
-     * @param string  $ot           Treated object type.
-     * @param int     $id           Identifier of entity to be deleted.
-     * @param boolean $confirmation Confirm the deletion, else a confirmation page is displayed.
-     * @param string  $tpl          Name of alternative template (for alternative display options, feeds and xml output)
-     * @param boolean $raw          Optional way to display a template instead of fetching it (needed for standalone output)
+     * @desc    This method provides handling of delete requests and is called at user/singlebox.tpl.
+     * 
+     * @param string  $args['ot']   Treated object type.
+     * @param string  $args['box']  Name of the box to be deleted.
+     * @param string  $args['returnfunc']  Name of the function to return to.  
+     * @param int     $args['id']   Identifier of the box to be deleted.
+     * @param int     $args['userid']   Box-owners Identifier. 
+     * @param boolean $confirmation Confirm the deletion, else a confirmation page is displayed. Not really used a.t.m.
      * @return mixed Output.
      */
     public function delete($args)
@@ -185,6 +204,14 @@ class Dashboard_Controller_User extends Dashboard_Controller_Base_User
         }
     }
 
+    /**
+     * @desc    This method provides the posibility to change the order of boxes on a users startpage and is called at user/singlebox.tpl.
+     * 
+     * @param int     $args['box1']     Identifier of the first box.
+     * @param int     $args['box2']     Identifier of the second box.
+     * @param int     $args['userid']   Box-owners Identifier. 
+     * @return redirects to controller->admin->defaultConfig if we came from there or to startpage if we are normal user.
+     */    
     public function switchPosition()
         {
             $box1 = (int) FormUtil::getPassedValue('box1');
@@ -210,6 +237,16 @@ class Dashboard_Controller_User extends Dashboard_Controller_Base_User
             }	
     }  
 
+    /**
+     * @desc    This method adds a new user-box and is calledd at user/main.tpl.
+     * 
+     * @param int     $args['box']     Name of the Box.
+     * @param int     $args['block']   unused so far.
+     * @param int     $args['page']    unused so far.
+     * @param int     $userid          Identifier of the current user.
+     * @param int     $args['dbposition']   Postion of the new box, set to 0 by default 
+     * @return redirects  to startpage.
+     */     
     public function addBox()
         {
             // Get Parameter and do a little security check
@@ -241,6 +278,12 @@ class Dashboard_Controller_User extends Dashboard_Controller_Base_User
             return System::redirect(System::getBaseUrl());
     }
 
+    /**
+     * @desc    This method resets a users boxes to default if he has not choosen a box yet or has deleted all of his boxes and is not used a.t.m.
+     *          In future versions it will be used to give a user the posibility to reset his configuration to standard defined at controller->admin->defaultConfig
+     * 
+     * @return .
+     */     
     public function reset()
         {
             // Check authid and make little security check
