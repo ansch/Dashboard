@@ -362,5 +362,14 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
             } else {
                     prayer("Table userdashboard_plugins anlegen fehlgeschlagen");
             }
+    }
+
+    /**
+     * @desc set caching to false for all admin functions
+     * @return      null
+     */
+    public function postInitialize()
+        {
+        $this->view->setCaching(false);
     }    
 }
