@@ -28,9 +28,8 @@
             {dashboardValidationError id='userid' class='validate-digits'}
         </div>
         <div class="z-formrow">
-            {formlabel for='dbposition' __text='Dbposition' mandatorysym='1'}
-            {formintinput group='boxes' id='dbposition' mandatory=true __title='Enter the dbposition of the boxes' maxLength=11 cssClass='required validate-digits'}
-            {dashboardValidationError id='dbposition' class='required'}
+            {formlabel for='dbposition' __text='Dbposition'}
+            {formintinput group='boxes' id='dbposition' mandatory=false __title='Enter the dbposition of the boxes' maxLength=11 cssClass=' validate-digits'}
             {dashboardValidationError id='dbposition' class='validate-digits'}
         </div>
         <div class="z-formrow">
