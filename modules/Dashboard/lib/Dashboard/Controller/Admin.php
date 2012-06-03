@@ -17,6 +17,13 @@
  */
 class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
 {
+    
+        /**
+     * @desc    This method updates the list aof available plugins. It is used in admin/pluginConfig.tpl
+     *          and calls api->admin->pluginsReload.
+     *
+     * @return redirect to Dashboard->admin->pluginConfig.
+     */    
     public function pluginsReload($args)
         {
         // DEBUG: permission check aspect starts
@@ -42,6 +49,11 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
         return System::redirect(ModUtil::url('Dashboard', 'admin', 'pluginConfig')); 
     }
     
+        /**
+     * @desc    Renders the pluginConfig-Part of the Admin-Section.
+     *
+     * @return admin/pluginConfig.tpl.
+     */    
     public function pluginConfig($args)
         {
 // DEBUG: permission check aspect starts
@@ -80,6 +92,11 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
         return $this->view->fetch('admin/pluginConfig.tpl');
     }
     
+        /**
+     * @desc    Renders the defaultConfig-Part of the Admin-Section.
+     *
+     * @return admin/defaultConfig.tpl.
+     */     
     public function defaultConfig($args)
         {          
         // DEBUG: permission check aspect starts
@@ -123,14 +140,7 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
     }
 
     /**
-     * This method provides a generic handling of simple delete requests.
-     *
-     * @param string  $ot           Treated object type.
-     * @param int     $id           Identifier of entity to be deleted.
-     * @param boolean $confirmation Confirm the deletion, else a confirmation page is displayed.
-     * @param string  $tpl          Name of alternative template (for alternative display options, feeds and xml output)
-     * @param boolean $raw          Optional way to display a template instead of fetching it (needed for standalone output)
-     * @return mixed Output.
+     * This method is unused a.t.m.
      */
     public function delete($args)
         {
@@ -196,7 +206,15 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
         // fetch and return the appropriate template
         return Dashboard_Util_View::processTemplate($this->view, 'admin', $objectType, 'defaultConfig', $args);
     }
-
+    
+        /**
+     * @desc    De-/Activates a plugin.
+     *
+     * @param int $args ['id'] T%he ID of the plugin to update.
+     * @param int $args ['state'] The state we wish to change the plugin to.
+     *
+     * @return redirects to dashboard->admin->pluginConfig.
+     */
     public function changePluginsState($args)
         {
             // DEBUG: permission check aspect starts
@@ -240,11 +258,20 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
             return System::redirect(ModUtil::url('Dashboard', 'admin', 'pluginConfig'));     
     }  
     
+        /**
+     * @desc    The main admin-method. Just redirects to commonSettings
+     *
+     */    
     public function main()
         {
             return $this->commonSettings();
     }
-     
+    
+        /**
+     * @desc    Renders the commonSettings-Part of the Admin-Section.
+     *
+     * @return admin/commonSettings.tpl.
+     */        
     public function commonSettings()
         {
         // DEBUG: permission check aspect starts
@@ -280,7 +307,14 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
             // fetch, process and display template
             //return $render->fetch('UserDashBoard_admin_CommonSettings.htm');
     }
-
+    
+        /**
+     * @desc    Update the common settings of Dashboard which are stored as ModVars.
+     *
+     * @param array $settings The settings-Array passed by admin/commonSettings.tpl via update-Button.
+     *
+     * @return redirects to Dashboard->admin->main.
+     */
     public function updateCommonSettings($args)
         {
         // security check
@@ -312,7 +346,17 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
 
         return System::redirect(ModUtil::url('Dashboard', 'admin', 'main'));    
     } 
-    
+
+    /**
+     * @desc    This method adds a new user-box and is triggered at admin/defaultConfig.tpl.
+     * 
+     * @param int     $args['box']     Name of the Box.
+     * @param int     $args['block']   unused so far.
+     * @param int     $args['page']    unused so far.
+     * @param int     $args['userid']  Identifier of the user, -1 = defaultConfig in this case.
+     * @param int     $args['dbposition']   Postion of the new box, set to 0 by default 
+     * @return boolean.
+     */    
     public function addBox($args)
         {
         // DEBUG: permission check aspect starts
@@ -355,6 +399,13 @@ class Dashboard_Controller_Admin extends Dashboard_Controller_Base_Admin
      
     } 
 
+    /**
+     * @desc    Unused a.t.m.
+     * 
+     * @param 
+     * 
+     * @return 
+     */ 
     public function updateTables ()
         {
             if (DBUtil::createTable('userdashboard_plugins')) {
