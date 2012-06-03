@@ -16,6 +16,17 @@
  */
 class Dashboard_Api_User extends Dashboard_Api_Base_User
 {
+
+    /**
+     * @desc    This method adds a new user-box and is triggered at controller->user->addBox
+     * 
+     * @param int     $args['box']     Name of the Box.
+     * @param int     $args['block']   set the 0 in any case so far
+     * @param int     $args['page']    set the 1 in any case so far
+     * @param int     $args['userid']  Identifier of the user.
+     * @param int     $args['dbposition']   Postion of the new box, set to 0 by default 
+     * @return boolean.
+     */     
     public function addBox($args)
         {
             // Process parameters
@@ -62,6 +73,15 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
             }
         }
 
+    /**
+     * @desc    This method cleans up the order of a users boxes when a new box is addded and is triggered at controller->user->addBox.
+     * 
+     * @param int     $args['block']   set the 0 in any case so far.
+     * @param int     $args['page']    set the 1 in any case so far
+     * @param int     $args['userid']  Identifier of the user.
+     * 
+     * @return boolean.
+     */ 
     public function cleanOrder($args)
         {
                 // Process parameters
@@ -90,7 +110,17 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
                 
                 return true;              
         } 
-    
+
+    /**
+     * @desc    This method returns the meta-data of a box called at controller->user->main and controller->admin->defaultConfig.
+     * 
+     * @param int     $args['box']   box-counter.
+     * @param int     $args['allowedit']Is editing allowed or not?
+     * @param int     $args['blockid']  Identifier of the block.
+     * @param string  $args['admin']  Is this method called by controller->admin or not?.
+     * 
+     * @return boolean.
+     */     
     public function getBoxCode($args)
         {
             $box        = $args['box'];
@@ -112,6 +142,13 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
             return $render->fetch('user/singlebox.tpl');         
         } 
 
+    /**
+     * @desc    This method returns the data of a single box called at api->user->switchPosition.
+     * 
+     * @param int     $args['id']   Identifier of the box.
+     * 
+     * @return $item.
+     */ 
     public function getBox($args)
         {
         // Argument check
@@ -125,7 +162,19 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
 
         return $item;
     }
-        
+
+    /**
+     * @desc    This method returns the data of all boxes of a user and puts them into an array.
+     *          It is called at controller->user->main and controller->admin->defaultConfig.
+     * 
+     * @param int     $args['box']     Name of the Box.
+     * @param int     $args['block']   set the 0 in any case so far.
+     * @param int     $args['blockinfo']   unused so far.
+     * @param int     $args['page']    set the 1 in any case so far.
+     * @param int     $args['userid']  Identifier of the user.
+     * 
+     * @return $item.
+     */         
     public function getBoxes($args)
         {
             $size = 0;
@@ -223,7 +272,7 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
     } 
 
     /**
-     * get a specific plugin
+     * @desc    This method gets a specific plugin
      *
      * @param    $args['id']  id of plugin to get
      * @return   array        item array, or false on failure
@@ -241,7 +290,12 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
 
         return $item;
     }    
-    
+
+    /**
+     * @desc    This method gets a the data of all plugins and is called at api->user->getBoxes and api->user->getOpenPlugins
+     *
+     * @return   array        plugins item array, or false on failure
+     */    
     public function getPlugins()
         {
             $dql = "SELECT id FROM Dashboard_Entity_Plugins id";
@@ -261,11 +315,17 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
                 return $plugins;
         }    
 
+
     /**
-     * This is a custom method. Documentation for this will be improved in later versions.
-     *
-     * @return mixed Output.
-     */
+     * @desc    This method switches the postion of two boxes.
+     *          It is called at controller->user->switchPositions.
+     * 
+     * @param int     $args['box1']     Identifier of the first box.
+     * @param int     $args['box2']     Identifier of the second box.
+     * @param int     $args['userid']   Box-owners Identifier. 
+     * 
+     * @return boolean.
+     */ 
     public function switchPosition ($args)
         {
             // DEBUG: permission check aspect starts
@@ -312,7 +372,16 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
             // Return result
             return true;
     }
-    
+
+    /**
+     * @desc    This method gets all open plugins for a user or for the defaultConfig done by the admin.
+     *          This means that only active and previously unused plugins are presented for selection.
+     *          It is called at controller->user->main and controller->admin->defaultConfig.
+     * 
+     * @param int     $args['userid']   Identifier of the user. 
+     * 
+     * @return $results.
+     */     
     public function getOpenPlugins($args)
         {
             $plugins = $this->getPlugins();
@@ -350,6 +419,13 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
             return $results;
     } 
 
+    /**
+     * @desc    This method is unused a.t.m.
+     * 
+     * @param  
+     * 
+     * @return 
+     */     
     public function delete($args)
         {
             // Get Parameters
@@ -392,6 +468,15 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
             }
     }  
 
+    /**
+     * @desc    This method uses Blockutil to include a block. It is called by every plugin which is block-based.
+     * 
+     * @param  string   $args['module']     The module which provides the block
+     * @param  string   $args['blockname']  The specific block.
+     * @param  string   $args['blockinfo']  Additional blockinfo. Unused a.t.m.
+     * 
+     * @return 
+     */
     public function includeBlock($args)
         {
             $modname 	= $args['module'];
@@ -410,7 +495,14 @@ class Dashboard_Api_User extends Dashboard_Api_Base_User
         //return pnBlockShow ($args['module'],$args['blockname'],$args['blockinfo']);	
         //return $render->fetch('UserDashBoard_plugin_blockcall.htm');
     }    
-    
+  
+    /**
+     * @desc    Unused a.t.m.
+     * 
+     * @param  
+     * 
+     * @return 
+     */  
     public function useTemplate($args)
         {
             $file = $args['file'];
