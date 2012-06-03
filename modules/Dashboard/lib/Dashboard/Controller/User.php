@@ -241,8 +241,8 @@ class Dashboard_Controller_User extends Dashboard_Controller_Base_User
      * @desc    This method adds a new user-box and is calledd at user/main.tpl.
      * 
      * @param int     $args['box']     Name of the Box.
-     * @param int     $args['block']   unused so far.
-     * @param int     $args['page']    unused so far.
+     * @param int     $args['block']   set the 0 in any case so far.
+     * @param int     $args['page']    set the 1 in any case so far.
      * @param int     $userid          Identifier of the current user.
      * @param int     $args['dbposition']   Postion of the new box, set to 0 by default 
      * @return redirects  to startpage.
