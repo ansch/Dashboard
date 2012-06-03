@@ -16,7 +16,6 @@
  */
 class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
 {
-    // feel free to add own api methods here
         /**
      * get available Admin panel links
      *
@@ -48,7 +47,7 @@ class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
     }
     
         /**
-     * Update attributes of a plugin.
+     * @desc    Update attributes of a plugin.
      *
      * @param int $args ['id'] the ID of the block to update.
      * @param string $args ['active'] the new title of the block.
@@ -58,7 +57,7 @@ class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
      * @param string $args ['dbfile'] the new language of the block.
      * @param string $args ['ajax'] the new content of the block.
      *
-     * @return bool true on success, false on failure.
+     * @return boolean.
      */
     public function update($args)
         {
@@ -81,7 +80,12 @@ class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
 
         return true;
     }
-
+    
+        /**
+     * @desc    This method updates the list aof available plugins. It called at controller->admin->pluginsReload.
+     *
+     * @return $indexed_plugins.
+     */  
     public function pluginsReload($args)
         {
         // DEBUG: permission check aspect starts
@@ -172,6 +176,11 @@ class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
         return $indexed_plugins;
     }  
     
+        /**
+     * @desc    This method deletes one ore more plugins from the database and is called at api->admin->reloadPlugins.
+     *
+     * @return return.
+     */      
     public function delete($args)
         {
         foreach ($args as $object) {
