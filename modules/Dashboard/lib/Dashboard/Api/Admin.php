@@ -115,15 +115,12 @@ class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
     		$pName = $rel_plugin->name();
                 $moduleactive = $indexed_plugins[$pName]['active'];
                     if (array_key_exists($pName,$indexed_plugins) && ModUtil::available($rel_plugin->module())) {
-                        $test[$pName]['existsavailable'] = 'yes_yes'; 
                         $indexed_plugins[$pName]['status'] = 'exists';
-                        $indexed_plugins[$pName]['active'] = $moduleactive;                        
+                        $indexed_plugins[$pName]['active'] = '1';                        
                     } elseif (array_key_exists($pName,$indexed_plugins) && !ModUtil::available($rel_plugin->module())) {
-                        $test[$pName]['existsavailable'] = 'yes_no';
                         $indexed_plugins[$pName]['status'] = 'exists';
                         $indexed_plugins[$pName]['active'] = '-1';                        
                     } elseif (!array_key_exists($pName,$indexed_plugins) && ModUtil::available($rel_plugin->module())) {
-                        $test[$pName]['existsavailable'] = 'no_yes';
                         $indexed_plugins[$pName]['name'] = $rel_plugin->name();  
                         $indexed_plugins[$pName]['title'] = $rel_plugin->title();
                         $indexed_plugins[$pName]['dbsize'] = $rel_plugin->size(); 
@@ -140,7 +137,6 @@ class Dashboard_Api_Admin extends Dashboard_Api_Base_Admin
                         $this->entityManager->persist($res);
                         $this->entityManager->flush();                        
                     } else {
-                        $test[$pName]['existsavailable'] = 'no_no';
                         $indexed_plugins[$pName]['name'] = $rel_plugin->name();  
                         $indexed_plugins[$pName]['title'] = $rel_plugin->title();
                         $indexed_plugins[$pName]['dbsize'] = $rel_plugin->size(); 
