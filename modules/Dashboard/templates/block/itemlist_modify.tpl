@@ -3,8 +3,8 @@
 <div class="z-formrow">
     <label for="Dashboard_objecttype">{gt text='Object type'}:</label>
     <select id="Dashboard_objecttype" name="objecttype" size="1">
-        <option value="boxes"{if $objectType eq 'boxes'} selected="selected"{/if}>{gt text='Boxes'}</option>
-        <option value="plugins"{if $objectType eq 'plugins'} selected="selected"{/if}>{gt text='Plugins'}</option>
+        <option value="boxx"{if $objectType eq 'boxx'} selected="selected"{/if}>{gt text='Boxes'}</option>
+        <option value="plugin"{if $objectType eq 'plugin'} selected="selected"{/if}>{gt text='Plugins'}</option>
     </select>
 </div>
 

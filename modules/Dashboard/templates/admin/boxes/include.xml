@@ -1,9 +1,0 @@
-{* purpose of this template: boxes xml inclusion template in admin area *}
-<boxes id="{$item.id}" createdon="{$item.createdDate|dateformat}" updatedon="{$item.updatedDate|dateformat}">
-    <id>{$item.id}</id>
-    <userid>{$item.userid}</userid>
-    <dbposition>{$item.dbposition}</dbposition>
-    <block>{$item.block}</block>
-    <plugin><![CDATA[{$item.plugin}]]></plugin>
-    <page>{$item.page}</page>
-</boxes>

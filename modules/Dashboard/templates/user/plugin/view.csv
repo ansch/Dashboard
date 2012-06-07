@@ -1,0 +1,5 @@
+{* purpose of this template: plugins view csv view in user area *}
+{dashboardTemplateHeaders contentType='text/comma-separated-values; charset=iso-8859-15' asAttachment=true filename='Plugins.csv'}
+"{gt text='Active'}";"{gt text='Name'}";"{gt text='Title'}";"{gt text='Boxsize'}";"{gt text='Pluginfile'}";"{gt text='Ajax'}"{foreach item='plugin' from=$items}
+"{$plugin.active|replace:"\"":""}";"{$plugin.name|replace:"\"":""}";"{$plugin.title|replace:"\"":""}";"{$plugin.boxsize|replace:"\"":""}";"{$plugin.pluginfile|replace:"\"":""}";"{$plugin.ajax|replace:"\"":""}"{/foreach}
+

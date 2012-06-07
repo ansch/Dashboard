@@ -29,7 +29,7 @@
                                     <option value="{$plugin.name}">{$plugin.title}</option>
                             {/foreach}
                             </select>
-                            <input type="hidden" name="dbposition" value="0" />
+                            <input type="hidden" name="boxorder" value="0" />
                             <input type="submit" value="{gt text="Add Box"}" />
                     </form>
             </div>

@@ -1,0 +1,3 @@
+{* purpose of this template: boxes display json view in admin area *}
+{dashboardTemplateHeaders contentType='application/json'}
+{$boxx->toJson()}

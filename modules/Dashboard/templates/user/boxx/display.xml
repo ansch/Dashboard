@@ -1,0 +1,4 @@
+{* purpose of this template: boxes display xml view in user area *}
+{dashboardTemplateHeaders contentType='text/xml'}<?xml version="1.0" encoding="{charset}" ?>
+{getbaseurl assign='baseurl'}
+{include file='user/boxx/include.xml' item=$boxx}

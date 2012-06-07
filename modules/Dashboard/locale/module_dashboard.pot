@@ -605,7 +605,7 @@ msgstr ""
 #: templates/admin/boxes/view.csv:3 templates/admin/boxes/view.tpl:48
 #: templates/user/boxes/display.tpl:12 templates/user/boxes/edit.tpl:31
 #: templates/user/boxes/view.csv:3 templates/user/boxes/view.tpl:46
-msgid "Dbposition"
+msgid "boxorder"
 msgstr ""
 
 #: templates/admin/boxes/display.tpl:16 templates/admin/boxes/edit.tpl:42
@@ -656,7 +656,7 @@ msgid "Enter the userid of the boxes"
 msgstr ""
 
 #: templates/admin/boxes/edit.tpl:37 templates/user/boxes/edit.tpl:32
-msgid "Enter the dbposition of the boxes"
+msgid "Enter the boxorder of the boxes"
 msgstr ""
 
 #: templates/admin/boxes/edit.tpl:43 templates/user/boxes/edit.tpl:38
@@ -869,14 +869,14 @@ msgstr ""
 #: templates/admin/plugins/view.csv:3 templates/admin/plugins/view.tpl:55
 #: templates/user/plugins/display.tpl:16 templates/user/plugins/edit.tpl:41
 #: templates/user/plugins/view.csv:3 templates/user/plugins/view.tpl:53
-msgid "Dbsize"
+msgid "boxsize"
 msgstr ""
 
 #: templates/admin/plugins/display.tpl:20 templates/admin/plugins/edit.tpl:52
 #: templates/admin/plugins/view.csv:3 templates/admin/plugins/view.tpl:58
 #: templates/user/plugins/display.tpl:18 templates/user/plugins/edit.tpl:47
 #: templates/user/plugins/view.csv:3 templates/user/plugins/view.tpl:56
-msgid "Dbfile"
+msgid "pluginfile"
 msgstr ""
 
 #: templates/admin/plugins/display.tpl:22 templates/admin/plugins/edit.tpl:57
@@ -916,11 +916,11 @@ msgid "Enter the title of the plugins"
 msgstr ""
 
 #: templates/admin/plugins/edit.tpl:47 templates/user/plugins/edit.tpl:42
-msgid "Enter the dbsize of the plugins"
+msgid "Enter the boxsize of the plugins"
 msgstr ""
 
 #: templates/admin/plugins/edit.tpl:53 templates/user/plugins/edit.tpl:48
-msgid "Enter the dbfile of the plugins"
+msgid "Enter the pluginfile of the plugins"
 msgstr ""
 
 #: templates/admin/plugins/edit.tpl:58 templates/user/plugins/edit.tpl:53

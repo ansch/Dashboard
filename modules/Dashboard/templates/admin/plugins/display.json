@@ -1,3 +1,0 @@
-{* purpose of this template: plugins display json view in admin area *}
-{dashboardTemplateHeaders contentType='application/json'}
-{$plugins->toJson()}

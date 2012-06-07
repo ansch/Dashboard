@@ -1,9 +1,0 @@
-{* purpose of this template: boxes view xml view in admin area *}
-{dashboardTemplateHeaders contentType='text/xml'}<?xml version="1.0" encoding="{charset}" ?>
-<boxes>
-{foreach item='item' from=$items}
-    {include file='admin/boxes/include.xml'}
-{foreachelse}
-    <noBoxes />
-{/foreach}
-</boxes>

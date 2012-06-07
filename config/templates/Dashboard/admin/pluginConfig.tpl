@@ -49,8 +49,8 @@
                     <td align="center">{$plugin.id}</td>
                     <td>{$plugin.name}</td>
                     <td>{$plugin.title}</td>
-                    <td>{$plugin.dbsize}</td>
-                    <td>{$plugin.dbfile}</td>
+                    <td>{$plugin.boxsize}</td>
+                    <td>{$plugin.pluginfile}</td>
                     {*td>{$plugin.ajax}</td*}
                     <td align="center">
                         {if $plugin.active eq -1}

@@ -1,5 +1,0 @@
-{* purpose of this template: boxes view csv view in user area *}
-{dashboardTemplateHeaders contentType='text/comma-separated-values; charset=iso-8859-15' asAttachment=true filename='Boxes.csv'}
-"{gt text='Userid'}";"{gt text='Dbposition'}";"{gt text='Block'}";"{gt text='Plugin'}";"{gt text='Page'}"{foreach item='boxes' from=$items}
-"{$boxes.userid|replace:"\"":""}";"{$boxes.dbposition|replace:"\"":""}";"{$boxes.block|replace:"\"":""}";"{$boxes.plugin|replace:"\"":""}";"{$boxes.page|replace:"\"":""}"{/foreach}
-

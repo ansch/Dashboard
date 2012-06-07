@@ -41,7 +41,7 @@
                                         <option value="{$template.name}">{$template.title}</option>
                                 {/foreach}
                                 </select>
-                                <input type="hidden" name="dbposition" value="0" />
+                                <input type="hidden" name="boxorder" value="0" />
                                 <input type="submit" value="{gt text="_BOXES_ADD"}" />
                         </form>
                     </p>

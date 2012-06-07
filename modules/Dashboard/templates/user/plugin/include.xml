@@ -1,0 +1,10 @@
+{* purpose of this template: plugins xml inclusion template in user area *}
+<plugin id="{$item.id}" createdon="{$item.createdDate|dateformat}" updatedon="{$item.updatedDate|dateformat}">
+    <id>{$item.id}</id>
+    <active>{$item.active}</active>
+    <name><![CDATA[{$item.name}]]></name>
+    <title><![CDATA[{$item.title}]]></title>
+    <boxsize>{$item.boxsize}</boxsize>
+    <pluginfile><![CDATA[{$item.pluginfile}]]></pluginfile>
+    <ajax>{$item.ajax}</ajax>
+</plugin>
